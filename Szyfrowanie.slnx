@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/Elementy rozwiązania/">
+    <File Path="Encryptor.cs" />
+  </Folder>
+  <Project Path="Szyfrowanie.csproj" />
+</Solution>
