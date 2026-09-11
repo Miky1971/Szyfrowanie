@@ -40,6 +40,7 @@
             button_FileFrom = new Button();
             button_FileTo = new Button();
             saveFileDialog_FileTo = new SaveFileDialog();
+            button_Pass = new Button();
             SuspendLayout();
             // 
             // button_Encryption
@@ -96,7 +97,8 @@
             // 
             textBox_Pass.Location = new Point(100, 70);
             textBox_Pass.Name = "textBox_Pass";
-            textBox_Pass.Size = new Size(330, 23);
+            textBox_Pass.PasswordChar = '*';
+            textBox_Pass.Size = new Size(328, 23);
             textBox_Pass.TabIndex = 5;
             // 
             // label_FileTo
@@ -138,11 +140,22 @@
             button_FileTo.UseVisualStyleBackColor = true;
             button_FileTo.Click += button_FileTo_Click;
             // 
+            // button_Pass
+            // 
+            button_Pass.Location = new Point(427, 70);
+            button_Pass.Name = "button_Pass";
+            button_Pass.Size = new Size(23, 23);
+            button_Pass.TabIndex = 10;
+            button_Pass.Text = "👁";
+            button_Pass.UseVisualStyleBackColor = true;
+            button_Pass.Click += button_Pass_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(460, 141);
+            Controls.Add(button_Pass);
             Controls.Add(button_FileTo);
             Controls.Add(button_FileFrom);
             Controls.Add(label_Pass);
@@ -173,5 +186,6 @@
         private Button button_FileFrom;
         private Button button_FileTo;
         private SaveFileDialog saveFileDialog_FileTo;
+        private Button button_Pass;
     }
 }

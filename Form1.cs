@@ -1,4 +1,8 @@
+using Microsoft.VisualBasic.ApplicationServices;
+using System.Security.Cryptography;
+
 namespace Szyfrowanie
+
 {
     public partial class Form1 : Form
     {
@@ -10,15 +14,6 @@ namespace Szyfrowanie
         private void openFileDialog_FileFrom_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
 
-        }
-
-        private void button_Decryption_Click(object sender, EventArgs e)
-        {
-            if (!areAllFieldsFilledIn())
-            {
-                MessageBox.Show("Wypełnij wszystkie pola.");
-                return;
-            }
         }
 
         private void textBox_FileFrom_TextChanged(object sender, EventArgs e)
@@ -64,6 +59,59 @@ namespace Szyfrowanie
             {
                 MessageBox.Show("Wypełnij wszystkie pola.");
                 return;
+            }
+            try
+            {
+                Encryptor.Encrypt(textBox_FileFrom.Text, textBox_FileTo.Text, textBox_Pass.Text);
+                MessageBox.Show($"Plik zaszyfrowany:\n{textBox_FileFrom.Text} -> {textBox_FileTo.Text}");
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show($"Nie udało się odczytać pliku.\n\nSzczegóły: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Błąd\n\nSzczegóły: {ex.Message}\n\n{ex.StackTrace}");
+            }
+
+        }
+        private void button_Decryption_Click(object sender, EventArgs e)
+        {
+            if (!areAllFieldsFilledIn())
+            {
+                MessageBox.Show("Wypełnij wszystkie pola.");
+                return;
+            }
+            try
+            {
+                Encryptor.Decrypt(textBox_FileFrom.Text, textBox_FileTo.Text, textBox_Pass.Text);
+                MessageBox.Show($"Plik odszyfrowany:\n{textBox_FileFrom.Text} -> {textBox_FileTo.Text}");
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show($"Nie udało się odczytać pliku.\n\nSzczegóły: {ex.Message}");
+            }
+            catch (Exception ex) when (ex is CryptographicException || ex is ArgumentOutOfRangeException)
+            {
+                MessageBox.Show($"Błąd dekryptarzu.\n\nSzczegóły: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Błąd dekryptarzu.\n\nSzczegóły: {ex.Message}\n\n{ex.StackTrace}");
+            }
+        }
+
+        private void button_Pass_Click(object sender, EventArgs e)
+        {
+            if (textBox_Pass.PasswordChar == '\0')
+            {
+                textBox_Pass.PasswordChar = '*';
+                button_Pass.Text = "🙈";
+            }
+            else
+            {
+                textBox_Pass.PasswordChar = '\0';
+                button_Pass.Text = "👁";
             }
         }
     }
