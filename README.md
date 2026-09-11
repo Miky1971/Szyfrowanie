@@ -5,7 +5,7 @@
 
 ## Co robi
 
-- **Podaje się:** 
+- **Podaje się:**
 - plik wejściowy i plik wynikowy (można je wybierać standartowym oknem wyboru plikow z Systemu Operacjnego po naciśnięciu klawisy [...]).
 - i wpisujesz hasło (czytelne lub zagwiazdkowane w zależności od stanu klawisza [👁/🙈]).
 - **Szyfrowanie** szyfruje plik, na podstawie hasła i zapisuje go jako nowy plik.
