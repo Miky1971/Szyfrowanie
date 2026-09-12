@@ -16,11 +16,8 @@
 - Z hasła i losowej soli buduje się klucz (PBKDF2, 100 000 iteracji, SHA256, klucz 256-bitowy).
 - Szyfrowanie **AES-GCM** dodaje tag uwierzytelniający, który pozwala wykryć, czy ktoś zmienił zaszyfrowane dane.
 - Do pliku wynikowego trafia: sól (16 bajtów) + nonce (12 bajtów) + tag (16 bajtów) + zaszyfrowane dane.
-- Przy deszyfrowaniu program wycina te cztery elementy z powrotem (bo ich długości są zawsze takie same)
-	z hasła i odzyskanej soli odtwarza ten sam klucz, i próbuje odszyfrować.
-
-- Cała logika szyfrowania/deszyfrowania jest w osobnej klasie `Encryptor` — nie zależy od formularza, 
-	więc da się jej użyć w innym projekcie bez zmian.
+- Przy deszyfrowaniu program wycina te cztery elementy z powrotem (bo ich długości są zawsze takie same) z hasła i odzyskanej soli odtwarza ten sam klucz, i próbuje odszyfrować.
+- Cała logika szyfrowania/deszyfrowania jest w osobnej klasie `Encryptor` — nie zależy od formularza, więc da się jej użyć w innym projekcie bez zmian.
 
 ## Błędy/wyjątki
 
