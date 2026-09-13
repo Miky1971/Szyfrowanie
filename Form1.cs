@@ -62,7 +62,7 @@ namespace Szyfrowanie
             }
             try
             {
-                Encryptor.Encrypt(textBox_FileFrom.Text, textBox_FileTo.Text, textBox_Pass.Text);
+                Encryptor.EncryptFile(textBox_FileFrom.Text, textBox_FileTo.Text, textBox_Pass.Text);
                 MessageBox.Show($"Plik zaszyfrowany:\n{textBox_FileFrom.Text} -> {textBox_FileTo.Text}");
             }
             catch (IOException ex)
@@ -73,7 +73,6 @@ namespace Szyfrowanie
             {
                 MessageBox.Show($"Błąd\n\nSzczegóły: {ex.Message}\n\n{ex.StackTrace}");
             }
-
         }
         private void button_Decryption_Click(object sender, EventArgs e)
         {
@@ -84,7 +83,7 @@ namespace Szyfrowanie
             }
             try
             {
-                Encryptor.Decrypt(textBox_FileFrom.Text, textBox_FileTo.Text, textBox_Pass.Text);
+                Encryptor.DecryptFile(textBox_FileFrom.Text, textBox_FileTo.Text, textBox_Pass.Text);
                 MessageBox.Show($"Plik odszyfrowany:\n{textBox_FileFrom.Text} -> {textBox_FileTo.Text}");
             }
             catch (IOException ex)
@@ -113,6 +112,11 @@ namespace Szyfrowanie
                 textBox_Pass.PasswordChar = '\0';
                 button_Pass.Text = "👁";
             }
+        }
+
+        private void textBox_Pass_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

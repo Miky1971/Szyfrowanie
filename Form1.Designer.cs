@@ -100,6 +100,7 @@
             textBox_Pass.PasswordChar = '*';
             textBox_Pass.Size = new Size(328, 23);
             textBox_Pass.TabIndex = 5;
+            textBox_Pass.TextChanged += textBox_Pass_TextChanged;
             // 
             // label_FileTo
             // 
