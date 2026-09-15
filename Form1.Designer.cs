@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             button_Encryption = new Button();
             button_Decryption = new Button();
             openFileDialog_FileFrom = new OpenFileDialog();
@@ -167,6 +168,7 @@
             Controls.Add(textBox_FileFrom);
             Controls.Add(button_Decryption);
             Controls.Add(button_Encryption);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             Text = "Szyfrowanie / Deszyfrowanie plików";
             ResumeLayout(false);
